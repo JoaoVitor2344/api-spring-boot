@@ -16,7 +16,7 @@ public class Fornecedor implements Serializable {
     
     @Column(name = "cnpj")
     private String cnpj;
-
+    
     public Fornecedor() {
     }
 
