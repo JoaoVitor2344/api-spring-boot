@@ -4,6 +4,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,8 +14,12 @@ import javax.persistence.Table;
 public class Fornecedor implements Serializable {
     
     @Id
-    @Column(name = "cod_pessoa")
-    private int cod_pessoa;
+    private Integer cod_pessoa;
+    
+    @MapsId("cod_pessoa")
+    @OneToOne
+    @JoinColumn(name = "cod_pessoa")
+    private Pessoa pessoa;
     
     @Column(name = "cnpj")
     private String cnpj;
@@ -20,17 +27,25 @@ public class Fornecedor implements Serializable {
     public Fornecedor() {
     }
 
-    public Fornecedor(int cod_pessoa, String cnpj) {
+    public Fornecedor(Integer cod_pessoa, String cnpj) {
         this.cod_pessoa = cod_pessoa;
         this.cnpj = cnpj;
     }
 
-    public int getCod_pessoa() {
+    public Integer getCod_pessoa() {
         return cod_pessoa;
     }
 
-    public void setCod_pessoa(int cod_pessoa) {
+    public void setCod_pessoa(Integer cod_pessoa) {
         this.cod_pessoa = cod_pessoa;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public String getCnpj() {
@@ -41,10 +56,5 @@ public class Fornecedor implements Serializable {
         this.cnpj = cnpj;
     }
 
-    @Override
-    public String toString() {
-        return "Fornecedor{" + "cod_pessoa=" + getCod_pessoa() + ", cnpj=" + getCnpj() + '}';
-    }
-    
     
 }
