@@ -15,7 +15,7 @@ public class Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_pessoa")
-    private int cod_pessoa;
+    private Integer cod_pessoa;
     
     @Column(name = "nome")
     private String nome;
@@ -29,15 +29,19 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
 
-    public Pessoa(int cod_pessoa, String nome, String endereco, String telefone) {
+    public Pessoa(Integer cod_pessoa, String nome, String endereco, String telefone) {
         this.cod_pessoa = cod_pessoa;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
     }
 
-    public int getCod_pessoa() {
+    public Integer getCod_pessoa() {
         return cod_pessoa;
+    }
+
+    public void setCod_pessoa(Integer cod_pessoa) {
+        this.cod_pessoa = cod_pessoa;
     }
 
     public String getNome() {

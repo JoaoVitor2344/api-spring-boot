@@ -3,9 +3,10 @@ package com.gerenciador.demo.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -14,9 +15,10 @@ import javax.persistence.Table;
 public class Fornecedor implements Serializable {
     
     @Id
-    private Integer cod_pessoa;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_fornecedor")
+    private Integer cod_fornecedor;
     
-    @MapsId("cod_pessoa")
     @OneToOne
     @JoinColumn(name = "cod_pessoa")
     private Pessoa pessoa;
@@ -27,17 +29,18 @@ public class Fornecedor implements Serializable {
     public Fornecedor() {
     }
 
-    public Fornecedor(Integer cod_pessoa, String cnpj) {
-        this.cod_pessoa = cod_pessoa;
+    public Fornecedor(Integer cod_fornecedor, Pessoa pessoa, String cnpj) {
+        this.cod_fornecedor = cod_fornecedor;
+        this.pessoa = pessoa;
         this.cnpj = cnpj;
     }
 
-    public Integer getCod_pessoa() {
-        return cod_pessoa;
+    public Integer getCod_fornecedor() {
+        return cod_fornecedor;
     }
 
-    public void setCod_pessoa(Integer cod_pessoa) {
-        this.cod_pessoa = cod_pessoa;
+    public void setCod_fornecedor(Integer cod_fornecedor) {
+        this.cod_fornecedor = cod_fornecedor;
     }
 
     public Pessoa getPessoa() {
@@ -55,6 +58,6 @@ public class Fornecedor implements Serializable {
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-
+    
     
 }
